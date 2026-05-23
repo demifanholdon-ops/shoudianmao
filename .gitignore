@@ -19,5 +19,10 @@ packages/*/dist/
 # Sandbox artifact (empty dirs created by build tool, harmless)
 **/{src}/
 
-# Empty placeholder GIFs from initial scaffold; real animations in v1.1
-packages/pet/assets/animations/*.gif
+# Sandbox artifacts (empty placeholder dir + intermediate extraction dirs)
+packages/pet/assets/animations/
+packages/pet/assets/gif_v2/
+packages/pet/assets/cats_v2/
+
+# Old GIFs (white card background baked in — replaced by transparent APNG in v1.0)
+packages/pet/assets/cats/*.gif

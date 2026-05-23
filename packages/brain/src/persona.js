@@ -102,13 +102,22 @@ export function getPersona(id) {
   return PERSONAS[id] || PERSONAS.gentle;
 }
 
-/** 守店猫的 4 种状态（来自 PDF 第 7 页） */
+/**
+ * 守店猫的 4 + 1 种状态（来自 PDF 第 7 页 + 团队 FRAME_RELATION_GUIDE.md）。
+ *
+ * `frame` 字段是 sprite-sheet 历史命名（profit/diamond/logistics/typing），
+ * `legacy` 字段保留方便和原 blocky_cat 资源对照；前端实际用 `id` 加载
+ * `packages/pet/assets/cats/<id>.gif`。
+ *
+ * ⚠️ "diamond" 在历史命名里指"破损商品箱+放大镜"，对应"心碎了"，不要
+ *     按字面理解成水晶/钻石。
+ */
 export const CAT_STATES = {
-  prosperity: { id: 'prosperity', label: '营业大吉', frame: 'profit', emoji: '👑😺' },
-  heartbreak: { id: 'heartbreak', label: '心碎了', frame: 'diamond', emoji: '💔😿' },
-  urgent: { id: 'urgent', label: '急死了', frame: 'logistics', emoji: '🚚😾' },
-  overload: { id: 'overload', label: '顾不过来', frame: 'typing', emoji: '⌨️🙀' },
-  idle: { id: 'idle', label: '巡店中', frame: 'idle', emoji: '🐱' },
+  prosperity: { id: 'prosperity', label: '营业大吉', legacy: 'profit',    emoji: '👑😺' },
+  heartbreak: { id: 'heartbreak', label: '心碎了',   legacy: 'diamond',   emoji: '🔍😿' },
+  urgent:     { id: 'urgent',     label: '急死了',   legacy: 'logistics', emoji: '🚚😾' },
+  overload:   { id: 'overload',   label: '顾不过来', legacy: 'typing',    emoji: '⌨️🙀' },
+  idle:       { id: 'idle',       label: '巡店中',   legacy: 'profit',    emoji: '🐱' },
 };
 
 /**
