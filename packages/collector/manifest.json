@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "守店猫 · 数据采集",
+  "short_name": "守店猫",
+  "version": "1.0.0",
+  "description": "登录千牛/生意参谋后，自动抓取店铺数据交给桌面守店猫做 AI 分析。",
+  "permissions": ["scripting", "storage", "alarms", "tabs"],
+  "host_permissions": [
+    "*://myseller.taobao.com/*",
+    "*://qn.taobao.com/*",
+    "*://sycm.taobao.com/*",
+    "http://127.0.0.1:17890/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "守店猫 · 数据采集"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://myseller.taobao.com/*", "*://qn.taobao.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

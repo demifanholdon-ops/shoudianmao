@@ -1,0 +1,57 @@
+{
+  "data": {
+    "storeName": "张大姐家纸品店",
+    "date": "2026-05-17",
+    "revenue": 417.10,
+    "revenueYesterday": 383.82,
+    "visitors": 166,
+    "visitorsYesterday": 452,
+    "orders": 23,
+    "ordersYesterday": 31,
+    "conversionRate": "12.65%",
+    "conversionRateYesterday": "6.86%",
+    "avgPrice": 19.86,
+    "avgPriceYesterday": 12.38,
+    "buyers": 21,
+    "experienceScore": 4.86,
+    "qualityScore": 4.97,
+    "logisticsScore": 4.76,
+    "serviceScore": 4.82,
+    "pendingShip": 17,
+    "pendingAfterSale": 0,
+    "pendingBadReview": 0,
+    "pendingComplaint": 0,
+    "violations": 0,
+    "platformAlerts": [
+      "商品客单价环比下降超10%",
+      "获流力落后同行",
+      "免费IPV低于同行71%",
+      "商品转化率环比下降超10%",
+      "平台补贴即将暂停，每日将损失9元成交额"
+    ]
+  },
+  "alerts": [
+    {
+      "rule": "R3",
+      "severity": "high",
+      "text": "访客数较昨日下降 63%（452→166）",
+      "suggestion": "检查主推款搜索排名"
+    },
+    {
+      "severity": "medium",
+      "text": "免费 IPV 低于同行 71%",
+      "suggestion": "速投关键词推广补流量"
+    },
+    {
+      "severity": "medium",
+      "text": "平台补贴即将暂停，每日损失 9 元成交额",
+      "suggestion": "优化达标"
+    },
+    {
+      "severity": "medium",
+      "text": "物流到货时长 58.81 小时（重庆-咸阳邮政线路）",
+      "suggestion": "建议菜鸟云仓发货"
+    }
+  ],
+  "personaId": "gentle"
+}

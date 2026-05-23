@@ -1,0 +1,20 @@
+{
+  "name": "@shoudianmao/brain",
+  "version": "1.0.0",
+  "description": "AI brain for 守店猫: LLM client + persona + RAG + 根因 agent",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./llm": "./src/llm.js",
+    "./persona": "./src/persona.js",
+    "./report": "./src/report.js",
+    "./agent": "./src/agent.js",
+    "./rag": "./src/rag.js",
+    "./mock": "./src/mock.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js"
+  },
+  "dependencies": {}
+}

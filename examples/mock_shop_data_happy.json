@@ -1,0 +1,23 @@
+{
+  "data": {
+    "storeName": "小李的水果铺",
+    "date": "2026-05-17",
+    "revenue": 5280,
+    "revenueYesterday": 3200,
+    "visitors": 890,
+    "visitorsYesterday": 720,
+    "orders": 42,
+    "conversionRate": "4.7%",
+    "avgPrice": 125.7,
+    "experienceScore": 4.92,
+    "qualityScore": 4.95,
+    "logisticsScore": 4.88,
+    "serviceScore": 4.93,
+    "pendingShip": 4,
+    "pendingBadReview": 0,
+    "violations": 0,
+    "platformAlerts": []
+  },
+  "alerts": [],
+  "personaId": "sarcastic"
+}

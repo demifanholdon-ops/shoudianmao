@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2a1d0f"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef8b39"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="580" fill="#fdf6e3"/>
+
+  <!-- Title -->
+  <text x="450" y="38" font-size="22" font-weight="900" text-anchor="middle" fill="#2a1d0f">守店猫 · 架构</text>
+  <text x="450" y="58" font-size="12" text-anchor="middle" fill="#877d68" letter-spacing="0.2em">DATA → CAT MOOD → 3 THINGS TO DO TODAY</text>
+
+  <!-- ===== Layer 1: USER ===== -->
+  <g>
+    <text x="40" y="100" font-size="11" font-weight="700" fill="#877d68" letter-spacing="0.2em">1 · USER</text>
+    <rect x="40" y="110" width="180" height="100" rx="14" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+    <rect x="44" y="114" width="180" height="100" rx="14" fill="none" stroke="#2a1d0f" stroke-width="2" transform="translate(4,4)"/>
+    <text x="130" y="142" font-size="14" font-weight="700" text-anchor="middle" fill="#2a1d0f">小老板</text>
+    <text x="130" y="162" font-size="11" text-anchor="middle" fill="#877d68">登录千牛 / 生意参谋</text>
+    <text x="130" y="180" font-size="11" text-anchor="middle" fill="#877d68">看猫，看日报</text>
+    <text x="130" y="198" font-size="11" text-anchor="middle" fill="#ef8b39" font-weight="700">零配置</text>
+  </g>
+
+  <!-- ===== Layer 2: DATA SOURCES ===== -->
+  <g>
+    <text x="280" y="100" font-size="11" font-weight="700" fill="#877d68" letter-spacing="0.2em">2 · DATA SOURCE</text>
+    <rect x="280" y="110" width="180" height="46" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+    <text x="370" y="132" font-size="13" font-weight="700" text-anchor="middle" fill="#2a1d0f">千牛 Qianniu</text>
+    <text x="370" y="148" font-size="10" text-anchor="middle" fill="#877d68">营收 / 访客 / 待办 / 体验分</text>
+
+    <rect x="280" y="166" width="180" height="46" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+    <text x="370" y="188" font-size="13" font-weight="700" text-anchor="middle" fill="#2a1d0f">生意参谋 Sycm</text>
+    <text x="370" y="204" font-size="10" text-anchor="middle" fill="#877d68">DSR 三项子分明细</text>
+  </g>
+
+  <!-- ===== Layer 3: COLLECTOR (Chrome ext) ===== -->
+  <g>
+    <text x="520" y="100" font-size="11" font-weight="700" fill="#877d68" letter-spacing="0.2em">3 · COLLECTOR</text>
+    <rect x="520" y="110" width="160" height="100" rx="14" fill="#fdebd0" stroke="#2a1d0f" stroke-width="2"/>
+    <rect x="524" y="114" width="160" height="100" rx="14" fill="none" stroke="#2a1d0f" stroke-width="2" transform="translate(4,4)"/>
+    <text x="600" y="140" font-size="13" font-weight="700" text-anchor="middle" fill="#2a1d0f">Chrome Extension</text>
+    <text x="600" y="160" font-size="10" text-anchor="middle" fill="#877d68">DOM scraping</text>
+    <text x="600" y="176" font-size="10" text-anchor="middle" fill="#877d68">阈值规则 R1–R6</text>
+    <text x="600" y="196" font-size="10" text-anchor="middle" fill="#c46a20" font-style="italic">0 token / 零网络</text>
+  </g>
+
+  <!-- ===== Layer 4: BRAIN (AI Core) ===== -->
+  <g>
+    <text x="40" y="252" font-size="11" font-weight="700" fill="#ef8b39" letter-spacing="0.2em">4 · AI BRAIN · 守店猫的大脑</text>
+    <rect x="40" y="262" width="820" height="220" rx="18" fill="#fff5e6" stroke="#ef8b39" stroke-width="3" stroke-dasharray="6 4"/>
+
+    <!-- Sub-box 1: persona / state -->
+    <g>
+      <rect x="60" y="282" width="180" height="80" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+      <text x="150" y="305" font-size="12" font-weight="700" text-anchor="middle" fill="#2a1d0f">① 情绪推断</text>
+      <text x="150" y="322" font-size="10" text-anchor="middle" fill="#877d68">inferCatState(data, alerts)</text>
+      <text x="150" y="338" font-size="10" text-anchor="middle" fill="#877d68">营业大吉 / 心碎了</text>
+      <text x="150" y="352" font-size="10" text-anchor="middle" fill="#877d68">急死了 / 顾不过来</text>
+    </g>
+
+    <!-- Sub-box 2: root cause agent -->
+    <g>
+      <rect x="260" y="282" width="180" height="80" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+      <text x="350" y="305" font-size="12" font-weight="700" text-anchor="middle" fill="#2a1d0f">② 根因 Agent</text>
+      <text x="350" y="322" font-size="10" text-anchor="middle" fill="#877d68">LLM 列假设 → 验证</text>
+      <text x="350" y="338" font-size="10" text-anchor="middle" fill="#877d68">→ 综合结论</text>
+      <text x="350" y="354" font-size="10" text-anchor="middle" fill="#ef8b39" font-style="italic">multi-step reasoning</text>
+    </g>
+
+    <!-- Sub-box 3: RAG -->
+    <g>
+      <rect x="460" y="282" width="180" height="80" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+      <text x="550" y="305" font-size="12" font-weight="700" text-anchor="middle" fill="#2a1d0f">③ RAG 踩坑库</text>
+      <text x="550" y="322" font-size="10" text-anchor="middle" fill="#877d68">100 条电商经验 jsonl</text>
+      <text x="550" y="338" font-size="10" text-anchor="middle" fill="#877d68">关键词召回 + LLM rerank</text>
+      <text x="550" y="354" font-size="10" text-anchor="middle" fill="#ef8b39" font-style="italic">zero-dep retrieval</text>
+    </g>
+
+    <!-- Sub-box 4: report gen -->
+    <g>
+      <rect x="660" y="282" width="180" height="80" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+      <text x="750" y="305" font-size="12" font-weight="700" text-anchor="middle" fill="#2a1d0f">④ 日报生成</text>
+      <text x="750" y="322" font-size="10" text-anchor="middle" fill="#877d68">LLM + 4 种 persona</text>
+      <text x="750" y="338" font-size="10" text-anchor="middle" fill="#877d68">头条 / 总结 / 3 件事</text>
+      <text x="750" y="354" font-size="10" text-anchor="middle" fill="#ef8b39" font-style="italic">structured output (JSON)</text>
+    </g>
+
+    <!-- LLM router box -->
+    <g>
+      <rect x="60" y="382" width="780" height="80" rx="10" fill="#fff" stroke="#2a1d0f" stroke-width="2"/>
+      <text x="450" y="405" font-size="12" font-weight="700" text-anchor="middle" fill="#2a1d0f">⑤ LLM Router · OpenAI-compatible</text>
+      <text x="450" y="422" font-size="10" text-anchor="middle" fill="#877d68">DeepSeek · Moonshot/Kimi · 通义千问 · OpenAI · Claude · Mock</text>
+      <text x="450" y="442" font-size="10" text-anchor="middle" fill="#ef8b39" font-style="italic">BYOK · 不经过守店猫服务器</text>
+    </g>
+  </g>
+
+  <!-- ===== Layer 5: PET (Electron) ===== -->
+  <g>
+    <text x="380" y="510" font-size="11" font-weight="700" fill="#877d68" letter-spacing="0.2em">5 · DESKTOP PET</text>
+    <rect x="380" y="520" width="240" height="44" rx="10" fill="#fdebd0" stroke="#2a1d0f" stroke-width="2"/>
+    <text x="500" y="540" font-size="13" font-weight="700" text-anchor="middle" fill="#2a1d0f">Electron 桌宠</text>
+    <text x="500" y="556" font-size="10" text-anchor="middle" fill="#877d68">猫的浮窗 + 日报窗</text>
+  </g>
+
+  <!-- Arrows -->
+  <line x1="220" y1="160" x2="276" y2="160" stroke="#2a1d0f" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="460" y1="160" x2="516" y2="160" stroke="#2a1d0f" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="214" x2="600" y2="260" stroke="#ef8b39" stroke-width="2" marker-end="url(#arrow-orange)" stroke-dasharray="0"/>
+  <text x="616" y="240" font-size="10" fill="#c46a20" font-style="italic">POST /push-data</text>
+
+  <line x1="500" y1="484" x2="500" y2="516" stroke="#ef8b39" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="514" y="504" font-size="10" fill="#c46a20" font-style="italic">brain.think()</text>
+
+  <line x1="500" y1="566" x2="220" y2="566" stroke="#2a1d0f" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="220" y1="566" x2="220" y2="210" stroke="#2a1d0f" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="350" y="556" font-size="10" fill="#877d68">猫 + 日报渲染回浮窗</text>
+</svg>

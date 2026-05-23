@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>店铺日报</title>
+  <style>
+    :root {
+      --paper: #fdf6e3;
+      --ink: #2a1d0f;
+      --orange: #ef8b39;
+      --orange-deep: #c46a20;
+      --green: #2f9a5a;
+      --red: #ef5e4f;
+      --pink: #ff6b9d;
+      --gray-1: #f4ebd9;
+      --gray-2: #cfc3a8;
+      --gray-3: #877d68;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: transparent;
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: var(--ink);
+      width: 100%; height: 100%;
+      overflow: hidden;
+      user-select: none;
+    }
+    .frame {
+      position: fixed; inset: 12px;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 6px 6px 0 var(--ink);
+      padding: 20px 22px 18px;
+      overflow-y: auto;
+      -webkit-app-region: drag;
+    }
+    .frame::-webkit-scrollbar { width: 6px; }
+    .frame::-webkit-scrollbar-thumb { background: var(--gray-2); border-radius: 3px; }
+
+    .header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      border-bottom: 2px dotted var(--gray-2);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .masthead {
+      font-family: "Georgia", "PingFang SC", serif;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .masthead-sub {
+      font-size: 11px;
+      color: var(--gray-3);
+      margin-top: 4px;
+      letter-spacing: 0.18em;
+    }
+    .close-btn {
+      width: 28px; height: 28px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      border-radius: 8px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      -webkit-app-region: no-drag;
+    }
+    .close-btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--ink); }
+
+    .section { margin-bottom: 16px; }
+    .section-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 2px 8px;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .headline {
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.25;
+      margin: 4px 0 10px;
+    }
+    .one-liner {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink);
+      padding: 10px 12px;
+      background: var(--gray-1);
+      border-left: 4px solid var(--orange);
+      border-radius: 4px;
+    }
+
+    /* 三柱指标卡 */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .stat-card {
+      border: 2px solid var(--ink);
+      padding: 8px;
+      text-align: center;
+      background: var(--paper);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .stat-num { font-size: 20px; font-weight: 900; line-height: 1; }
+    .stat-num.red { color: var(--red); }
+    .stat-num.green { color: var(--green); }
+    .stat-label { font-size: 10px; color: var(--gray-3); margin-top: 4px; letter-spacing: 0.08em; }
+
+    .insights {
+      list-style: none; padding: 0; margin: 8px 0;
+    }
+    .insights li {
+      padding: 6px 0;
+      border-bottom: 1px dotted var(--gray-2);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .insights li::before {
+      content: '·';
+      color: var(--orange-deep);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .todos { margin: 8px 0; }
+    .todo-card {
+      border: 2px solid var(--ink);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      background: var(--paper);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .todo-num {
+      display: inline-block;
+      width: 22px; height: 22px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      font-weight: 900;
+      font-size: 12px;
+      margin-right: 8px;
+    }
+    .todo-title { font-size: 14px; font-weight: 700; }
+    .todo-why { font-size: 12px; color: var(--gray-3); margin-top: 4px; line-height: 1.4; }
+    .todo-impact {
+      font-size: 11px;
+      color: var(--green);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .todo-kbref {
+      font-size: 10px;
+      color: var(--orange-deep);
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+      font-family: "Courier New", monospace;
+    }
+
+    .root-cause {
+      border: 2px dashed var(--orange-deep);
+      padding: 10px 12px;
+      background: rgba(239, 139, 57, 0.08);
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .root-cause-label {
+      font-weight: 900;
+      color: var(--orange-deep);
+      letter-spacing: 0.1em;
+    }
+    .evidence { color: var(--gray-3); font-size: 11px; margin-top: 6px; }
+
+    .footer {
+      border-top: 2px dotted var(--gray-2);
+      padding-top: 10px;
+      font-size: 10px;
+      color: var(--gray-3);
+      text-align: center;
+      letter-spacing: 0.15em;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gray-3);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--gray-3);
+      font-size: 13px;
+    }
+    .dot { animation: blink 1s infinite; opacity: 0.4; }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="header">
+      <div>
+        <div class="masthead">守店猫日报</div>
+        <div class="masthead-sub" id="date-line">THE SHOP DAILY</div>
+      </div>
+      <button class="close-btn" id="close-btn">×</button>
+    </div>
+
+    <div id="content">
+      <div class="empty">
+        喵～ 我还没读到数据。<br>
+        请在浏览器登录千牛或生意参谋，我会自动开始工作。
+      </div>
+    </div>
+
+    <div class="footer">
+      <span id="footer-text">守店猫 · 桌面陪伴版</span>
+    </div>
+  </div>
+
+  <script>
+    const content = document.getElementById('content');
+    const dateLine = document.getElementById('date-line');
+    const footerText = document.getElementById('footer-text');
+
+    document.getElementById('close-btn').addEventListener('click', () => {
+      window.petApp?.closeReport();
+    });
+
+    if (window.petApp) {
+      petApp.onReport(({ data, alerts, brainResult }) => {
+        if (!brainResult) {
+          content.innerHTML = `<div class="loading">猫在分析数据<span class="dot">·</span><span class="dot">·</span><span class="dot">·</span></div>`;
+          return;
+        }
+        renderReport({ data, alerts, brainResult });
+      });
+    }
+
+    function renderReport({ data, alerts, brainResult }) {
+      const r = brainResult.report || {};
+      const rc = brainResult.rootCause || {};
+      const state = brainResult.catState;
+
+      const now = new Date();
+      dateLine.textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日 · ${state?.label || '巡店中'}`;
+
+      let html = '';
+
+      // === 标题区 ===
+      html += `<div class="section">`;
+      html += `<div class="section-tag">TODAY'S HEADLINE</div>`;
+      html += `<div class="headline">${escapeHtml(r.headline || '今日店铺速读')}</div>`;
+      html += `<div class="one-liner">${escapeHtml(r.oneLiner || '')}</div>`;
+      html += `</div>`;
+
+      // === 三柱指标卡 ===
+      if (alerts && data) {
+        const visitorsDelta = data.visitorsYesterday && data.visitors
+          ? Math.round((data.visitors - data.visitorsYesterday) / data.visitorsYesterday * 100)
+          : null;
+        html += `<div class="stat-row">`;
+        html += statCard(
+          alerts.length || 0,
+          alerts.length ? 'red' : 'green',
+          alerts.length ? 'ALERTS' : 'ALL CLEAR'
+        );
+        html += statCard(
+          visitorsDelta !== null ? (visitorsDelta >= 0 ? '+' : '') + visitorsDelta + '%' : '-',
+          visitorsDelta > 0 ? 'green' : visitorsDelta < 0 ? 'red' : '',
+          'VISITORS'
+        );
+        html += statCard(
+          data.experienceScore || '-',
+          (data.experienceScore || 5) < 4.6 ? 'red' : 'green',
+          'DSR'
+        );
+        html += `</div>`;
+      }
+
+      // === 关键发现 ===
+      if (r.insights && r.insights.length) {
+        html += `<div class="section">`;
+        html += `<div class="section-tag">KEY FINDINGS · 关键发现</div>`;
+        html += `<ul class="insights">`;
+        r.insights.forEach(i => { html += `<li>${escapeHtml(i)}</li>`; });
+        html += `</ul></div>`;
+      }
+
+      // === 根因分析 ===
+      if (rc.rootCause) {
+        html += `<div class="section">`;
+        html += `<div class="section-tag">ROOT CAUSE · 根因</div>`;
+        html += `<div class="root-cause">`;
+        html += `<span class="root-cause-label">▸ </span>${escapeHtml(rc.rootCause)}`;
+        if (rc.evidence && rc.evidence.length) {
+          html += `<div class="evidence">证据：${rc.evidence.map(escapeHtml).join('；')}</div>`;
+        }
+        html += `</div></div>`;
+      }
+
+      // === 今日要做的 3 件事 ===
+      if (r.todos && r.todos.length) {
+        html += `<div class="section">`;
+        html += `<div class="section-tag">3 THINGS TO DO TODAY · 今日要做</div>`;
+        html += `<div class="todos">`;
+        r.todos.forEach((t, i) => {
+          html += `<div class="todo-card">`;
+          html += `<span class="todo-num">${i + 1}</span>`;
+          html += `<span class="todo-title">${escapeHtml(t.title || '')}</span>`;
+          if (t.why) html += `<div class="todo-why">${escapeHtml(t.why)}</div>`;
+          if (t.impact) html += `<div class="todo-impact">📈 ${escapeHtml(t.impact)}</div>`;
+          if (t.kbRef) html += `<div class="todo-kbref">参考: ${escapeHtml(t.kbRef)}</div>`;
+          html += `</div>`;
+        });
+        html += `</div></div>`;
+      }
+
+      content.innerHTML = html;
+
+      const personaName = brainResult.persona?.name || '守店猫';
+      footerText.textContent = `${personaName} · ${state?.label || ''} · ${now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}`;
+    }
+
+    function statCard(num, color, label) {
+      return `<div class="stat-card">
+        <div class="stat-num ${color || ''}">${num}</div>
+        <div class="stat-label">${label}</div>
+      </div>`;
+    }
+
+    function escapeHtml(s) {
+      if (s == null) return '';
+      return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+    }
+  </script>
+</body>
+</html>

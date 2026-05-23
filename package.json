@@ -1,0 +1,29 @@
+{
+  "name": "shoudianmao",
+  "version": "1.0.0",
+  "description": "守店猫 · A desktop cat that translates your e-commerce dashboards into one mood + 3 things to do today.",
+  "type": "module",
+  "scripts": {
+    "demo": "node scripts/demo.js",
+    "demo:mock": "MOCK=1 node scripts/demo.js",
+    "demo:persona": "node scripts/demo-persona.js",
+    "demo:rag": "node scripts/demo-rag.js"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "rag",
+    "ecommerce",
+    "desktop-pet",
+    "electron",
+    "llm",
+    "taobao",
+    "shoudianmao"
+  ],
+  "author": "Theodoreti Marshoq",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}

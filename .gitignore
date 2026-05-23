@@ -1,0 +1,23 @@
+node_modules/
+dist/
+build/
+out/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+error.log
+.vscode/
+.idea/
+.cache/
+
+# Build artifacts
+packages/*/node_modules/
+packages/*/dist/
+
+# Sandbox artifact (empty dirs created by build tool, harmless)
+**/{src}/
+
+# Empty placeholder GIFs from initial scaffold; real animations in v1.1
+packages/pet/assets/animations/*.gif

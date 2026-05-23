@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>守店猫 · 数据采集</title>
+  <style>
+    :root {
+      --paper: #fdf6e3;
+      --ink: #2a1d0f;
+      --orange: #ef8b39;
+      --orange-deep: #c46a20;
+      --green: #2f9a5a;
+      --gray-2: #cfc3a8;
+      --gray-3: #877d68;
+    }
+    * { box-sizing: border-box; }
+    body {
+      width: 320px;
+      margin: 0;
+      padding: 16px;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    .header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .logo {
+      width: 32px; height: 32px;
+      background: var(--orange);
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      box-shadow: 2px 2px 0 var(--ink);
+      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    h1 { margin: 0; font-size: 16px; }
+    .subtitle { font-size: 11px; color: var(--gray-3); margin-top: 2px; letter-spacing: 0.1em; }
+
+    .status-card {
+      border: 2px solid var(--ink);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      background: #fff;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .status-label { font-size: 11px; color: var(--gray-3); letter-spacing: 0.1em; }
+    .status-value { font-size: 14px; margin-top: 4px; font-weight: 700; }
+    .status-value.ok { color: var(--green); }
+    .status-value.warn { color: var(--orange-deep); }
+
+    .actions { display: flex; flex-direction: column; gap: 8px; }
+    button {
+      width: 100%;
+      padding: 9px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--paper);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+      font-family: inherit;
+    }
+    button:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
+    button.primary { background: var(--orange); }
+
+    .hint {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: rgba(239, 139, 57, 0.1);
+      border-left: 3px solid var(--orange);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--gray-2);
+      font-size: 10px;
+      color: var(--gray-3);
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+    a { color: var(--orange-deep); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🐱</div>
+    <div>
+      <h1>守店猫</h1>
+      <div class="subtitle">DATA COLLECTOR</div>
+    </div>
+  </div>
+
+  <div class="status-card">
+    <div class="status-label">数据源</div>
+    <div class="status-value" id="data-status">检查中…</div>
+  </div>
+
+  <div class="status-card">
+    <div class="status-label">桌面守店猫</div>
+    <div class="status-value" id="pet-status">检查中…</div>
+  </div>
+
+  <div class="actions">
+    <button class="primary" id="btn-scan">立刻巡店一次</button>
+    <button id="btn-open-tab">打开千牛后台</button>
+  </div>
+
+  <div class="hint" id="hint">
+    💡 把这个窗口关掉就行，猫会在后台每 15 分钟自动巡店一次。
+  </div>
+
+  <div class="footer">SHOUDIANMAO · v1.0</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
